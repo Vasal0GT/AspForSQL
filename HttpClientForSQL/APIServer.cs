@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,10 +35,34 @@ namespace HttpClientForSQL
 
         public async Task<Library> GetLibraryAsync(int id)
         {
-            var response = await _httpClient.GetAsync($"{_baseUrl}libraries{id}");
+            var response = await _httpClient.GetAsync($"{_baseUrl}libraries/{id}");
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Library>(content);
+        }
+
+        public async Task<int> UpdateLibraryAsync(int id, Library library)
+        { 
+            var json = JsonConvert.SerializeObject(library);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync($"{_baseUrl}libraries/{id}", content);
+            response.EnsureSuccessStatusCode();
+            return ((int)response.StatusCode);
+        }
+
+        public async Task<int> DeleteLibraryAsync(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}libraries/{id}");
+            response.EnsureSuccessStatusCode();
+            return ((int)response.StatusCode);
+        }
+
+        public async Task<int> PostLibraryAsync(Library library)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}libraries", library);
+            response.EnsureSuccessStatusCode();
+            return ((int)response.StatusCode);
         }
     }
 }
