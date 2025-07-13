@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HttpClientForSQL;
+using AspForSQL;
 
 namespace HttpClientForSQL
 {
@@ -20,9 +22,25 @@ namespace HttpClientForSQL
     /// </summary>
     public partial class MainWindow : Window
     {
+        Library localLibrary = new Library();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public async Task CombineToLibrary()
+        { 
+            localLibrary.Name = Name_TB.Text;
+            localLibrary.Year = Int32.Parse(Year_TB.Text);
+            localLibrary.Author = Author_TB.Text;
+        }
+
+        private async void Post_Button_Click(object sender, RoutedEventArgs e)
+        {
+            APIServer aPIServer = new APIServer();
+            await CombineToLibrary();
+            int answer = await aPIServer.PostLibraryAsync(localLibrary);
+            Id_label.Content = answer;
         }
     }
 }

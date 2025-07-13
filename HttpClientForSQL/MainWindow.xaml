@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="636,31,0,0" VerticalAlignment="Top" Width="112" Height="51"/>
+        <Button x:Name="Post_Button" Content="POST" HorizontalAlignment="Left" Margin="636,31,0,0" VerticalAlignment="Top" Width="112" Height="51" Click="Post_Button_Click"/>
+        <Label x:Name="Id_label" Content="ID" HorizontalAlignment="Left" Margin="146,31,0,0" VerticalAlignment="Top" Width="73" Height="51" Background="#FFFFFEFE" IsEnabled="False"/>
+        <Label x:Name="Name_label" Content="Name" HorizontalAlignment="Left" Margin="258,31,0,0" VerticalAlignment="Top" Width="73" Height="51" Background="#FFFFFEFE"/>
+        <Label x:Name="Author_label" Content="Author" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
+        <Label x:Name="Year_label" Content="Year" HorizontalAlignment="Left" Margin="477,31,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
+        <TextBox x:Name="Name_TB" HorizontalAlignment="Left" Margin="258,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <TextBox x:Name="Author_TB" HorizontalAlignment="Left" Margin="364,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <TextBox x:Name="Year_TB" HorizontalAlignment="Left" Margin="477,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
 
     </Grid>
 </Window>
