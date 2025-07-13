@@ -1,0 +1,27 @@
+@AspForSQL_HostAddress = https://localhost:7089
+
+GET {{AspForSQL_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{AspForSQL_HostAddress}}/api/libraries
+Content-Type: application/json
+
+{
+  "Author": "Булгаков",
+  "Name": "Мастер и Маргарита",
+  "Year": 1936
+
+}
+
+###
+
+POST {{AspForSQL_HostAddress}}/api/libraries
+Content-Type: application/json
+
+{
+  //Library
+}
+
+###
