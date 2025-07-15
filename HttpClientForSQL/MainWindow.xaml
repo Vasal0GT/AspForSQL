@@ -7,14 +7,28 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Post_Button" Content="POST" HorizontalAlignment="Left" Margin="636,31,0,0" VerticalAlignment="Top" Width="112" Height="51" Click="Post_Button_Click"/>
-        <Label x:Name="Id_label" Content="ID" HorizontalAlignment="Left" Margin="146,31,0,0" VerticalAlignment="Top" Width="73" Height="51" Background="#FFFFFEFE" IsEnabled="False"/>
+        <Button x:Name="Post_Button" Content="POST" HorizontalAlignment="Left" Margin="597,32,0,0" VerticalAlignment="Top" Width="112" Height="71" Click="Post_Button_Click"/>
+        <Label x:Name="StatusCode_Label" Content="Status code" HorizontalAlignment="Left" Margin="33,32,0,0" VerticalAlignment="Top" Width="73" Height="24" Background="#FFFFFEFE" IsEnabled="False" Foreground="#FFA7A3A3"/>
         <Label x:Name="Name_label" Content="Name" HorizontalAlignment="Left" Margin="258,31,0,0" VerticalAlignment="Top" Width="73" Height="51" Background="#FFFFFEFE"/>
         <Label x:Name="Author_label" Content="Author" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
         <Label x:Name="Year_label" Content="Year" HorizontalAlignment="Left" Margin="477,31,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
         <TextBox x:Name="Name_TB" HorizontalAlignment="Left" Margin="258,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
         <TextBox x:Name="Author_TB" HorizontalAlignment="Left" Margin="364,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
-        <TextBox x:Name="Year_TB" HorizontalAlignment="Left" Margin="477,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <TextBox x:Name="Year_TB" HorizontalAlignment="Left" Margin="477,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21" AutomationProperties.ItemType="int"/>
+        <Label x:Name="IDForGet_label" Content="Id" HorizontalAlignment="Left" Margin="477,136,0,0" VerticalAlignment="Top" Width="72" Height="31" Background="#FFFFFEFE"/>
+        <TextBox x:Name="Id_TB" HorizontalAlignment="Left" Margin="477,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <Button x:Name="Get_Button" Content="GET" HorizontalAlignment="Left" Margin="597,136,0,0" VerticalAlignment="Top" Width="112" Height="72" Click="Get_Button_Click"/>
+        <Label Content="GET result:" HorizontalAlignment="Left" Margin="203,152,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="GetResult_TB" HorizontalAlignment="Left" Margin="203,187,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="247" Height="21"/>
+        <Label x:Name="Name_label_Copy" Content="Name" HorizontalAlignment="Left" Margin="167,240,0,0" VerticalAlignment="Top" Width="73" Height="51" Background="#FFFFFEFE"/>
+        <Label x:Name="Author_label_Copy" Content="Author" HorizontalAlignment="Left" Margin="273,240,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
+        <Label x:Name="Year_label_Copy" Content="Year" HorizontalAlignment="Left" Margin="386,240,0,0" VerticalAlignment="Top" Width="72" Height="51" Background="#FFFFFEFE"/>
+        <TextBox x:Name="NameForPut_TB" HorizontalAlignment="Left" Margin="167,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <TextBox x:Name="AuthorForPut_TB" HorizontalAlignment="Left" Margin="273,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <TextBox x:Name="YearForPut_TB" HorizontalAlignment="Left" Margin="386,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <Label x:Name="IDForGet_label_Copy" Content="Id" HorizontalAlignment="Left" Margin="477,240,0,0" VerticalAlignment="Top" Width="72" Height="31" Background="#FFFFFEFE"/>
+        <TextBox x:Name="IdForPut_TB" HorizontalAlignment="Left" Margin="477,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
+        <Button x:Name="Put_Button" Content="PUT" HorizontalAlignment="Left" Margin="597,240,0,0" VerticalAlignment="Top" Width="112" Height="72" Click="Put_Button_Click"/>
 
     </Grid>
 </Window>
