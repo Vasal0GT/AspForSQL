@@ -42,13 +42,10 @@ namespace HttpClientForSQL
         }
 
         public async Task<int> UpdateLibraryAsync(int id, Library library)
-        { 
-            var json = JsonConvert.SerializeObject(library);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PutAsync($"{_baseUrl}libraries/{id}", content);
+        {
+            var response = await _httpClient.PutAsJsonAsync<Library>($"{_baseUrl}libraries/{id}", library);
             response.EnsureSuccessStatusCode();
-            return ((int)response.StatusCode);
+            return (int)response.StatusCode;
         }
 
         public async Task<int> DeleteLibraryAsync(int id)
