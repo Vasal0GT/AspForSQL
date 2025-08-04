@@ -84,7 +84,8 @@ namespace HttpClientForSQL
                     {
                         Author = AuthorForPut_TB.Text,
                         Name = NameForPut_TB.Text,
-                        Year = Int32.Parse(YearForPut_TB.Text)
+                        Year = Int32.Parse(YearForPut_TB.Text),
+                        Id = Int32.Parse(IdForPut_TB.Text)
                     };
 
 

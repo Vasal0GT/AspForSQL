@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace HttpClientForSQL
 {
+
     public class APIServer
     {
+        
         //поля классов для дальнейшей работы
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl = "https://localhost:7089/api/";

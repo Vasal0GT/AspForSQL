@@ -25,3 +25,16 @@ Content-Type: application/json
 }
 
 ###
+
+@id=1
+PUT {{AspForSQL_HostAddress}}/api/libraries/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "Author": "Булгаков",
+  "Name": "Мастер и Маргарита",
+  "Year": 1936
+}
+
+###
