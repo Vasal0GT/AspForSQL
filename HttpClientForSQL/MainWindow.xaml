@@ -29,6 +29,11 @@
         <Label x:Name="IDForGet_label_Copy" Content="Id" HorizontalAlignment="Left" Margin="477,240,0,0" VerticalAlignment="Top" Width="72" Height="31" Background="#FFFFFEFE"/>
         <TextBox x:Name="IdForPut_TB" HorizontalAlignment="Left" Margin="477,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="21"/>
         <Button x:Name="Put_Button" Content="PUT" HorizontalAlignment="Left" Margin="597,240,0,0" VerticalAlignment="Top" Width="112" Height="72" Click="Put_Button_Click"/>
+        <Button x:Name="GetAll_Button" Content="GET" HorizontalAlignment="Left" Margin="597,340,0,0" VerticalAlignment="Top" Width="112" Height="72" Click="GetAll_Button_Click"/>
+        <Label Content="Get All Libraries" HorizontalAlignment="Left" Margin="116,322,0,0" VerticalAlignment="Top" Width="215"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="107,353,251,10">
+            <TextBlock x:Name="GetAll_TB" TextWrapping="Wrap" Height="Auto" Width="442" RenderTransformOrigin="0.5,0.517"/>
+        </ScrollViewer>
 
     </Grid>
 </Window>

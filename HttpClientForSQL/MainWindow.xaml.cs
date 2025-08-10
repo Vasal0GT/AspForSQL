@@ -100,5 +100,13 @@ namespace HttpClientForSQL
             });
 
         }
+
+        private async void GetAll_Button_Click(object sender, RoutedEventArgs e)
+        {
+            APIServer api = new APIServer();
+            var answer = await api.GetLibrariesAsync();
+            string json = JsonConvert.SerializeObject(answer);
+            GetAll_TB.Text = json;
+        }
     }
 }
