@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using AspForSQL;
+using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using HttpClientForSQL;
-using AspForSQL;
-using Newtonsoft.Json;
 
 namespace HttpClientForSQL
 {
@@ -105,7 +94,7 @@ namespace HttpClientForSQL
         {
             APIServer api = new APIServer();
             var answer = await api.GetLibrariesAsync();
-            string json = JsonConvert.SerializeObject(answer);
+            string json = JsonConvert.SerializeObject(answer, Formatting.Indented);
             GetAll_TB.Text = json;
         }
     }
