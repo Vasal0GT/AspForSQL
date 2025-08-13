@@ -1,4 +1,4 @@
-﻿namespace AspForSQL
+﻿namespace AspForSQL.Models
 {
     public class Library
     {

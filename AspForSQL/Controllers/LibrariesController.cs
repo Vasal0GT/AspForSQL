@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AspForSQL;
+using AspForSQL.Models;
 
 namespace AspForSQL.Controllers
 {
