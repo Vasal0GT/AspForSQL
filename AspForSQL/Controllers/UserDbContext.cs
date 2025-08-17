@@ -1,4 +1,4 @@
-﻿using AspForSQL.Models;
+﻿using AspForSQL.Enteties;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -16,7 +16,7 @@ namespace AspForSQL.Controllers
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(Configuration.GetConnectionString("ApiDatabase"));
+            optionsBuilder.UseNpgsql(Configuration.GetConnectionString("AutDatabase"));
         }
     }
 }

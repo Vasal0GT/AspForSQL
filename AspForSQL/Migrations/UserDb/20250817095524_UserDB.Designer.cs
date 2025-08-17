@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AspForSQL.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20250813061438_AddUserDB")]
-    partial class AddUserDB
+    [Migration("20250817095524_UserDB")]
+    partial class UserDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace AspForSQL.Migrations.UserDb
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AspForSQL.Models.User", b =>
+            modelBuilder.Entity("AspForSQL.Enteties.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,11 +32,11 @@ namespace AspForSQL.Migrations.UserDb
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("text");
 

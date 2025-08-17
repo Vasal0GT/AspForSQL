@@ -21,7 +21,7 @@ namespace AspForSQL.Migrations.UserDb
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AspForSQL.Models.User", b =>
+            modelBuilder.Entity("AspForSQL.Enteties.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,11 +29,11 @@ namespace AspForSQL.Migrations.UserDb
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("text");
 

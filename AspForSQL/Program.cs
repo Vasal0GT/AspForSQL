@@ -1,5 +1,6 @@
 using AspForSQL.Controllers;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using System;
 
 namespace AspForSQL
@@ -29,6 +30,7 @@ namespace AspForSQL
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.MapScalarApiReference();
             }
 
             app.UseHttpsRedirection();
