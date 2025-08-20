@@ -13,11 +13,14 @@ namespace AspForSQL
 
             // Add services to the container.
 
-            // регестрируем dbcontext
+            // регестрируем dbcontextы
             
             builder.Services.AddDbContext<LibraryDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("ApiDatabase")));
-            
+
+            builder.Services.AddDbContext<UserDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("AutDatabase")));
+
             //
 
             builder.Services.AddControllers();
