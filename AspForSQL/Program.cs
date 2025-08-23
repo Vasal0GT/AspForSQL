@@ -1,4 +1,5 @@
 using AspForSQL.Controllers;
+using AspForSQL.Services;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using System;
@@ -21,7 +22,7 @@ namespace AspForSQL
             builder.Services.AddDbContext<UserDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("AutDatabase")));
 
-            //
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
