@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspForSQL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspForSQL.Controllers
 {
@@ -21,6 +22,7 @@ namespace AspForSQL.Controllers
         }
 
         // GET: api/Libraries
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Library>>> GetLibraries()
         {
@@ -28,6 +30,7 @@ namespace AspForSQL.Controllers
         }
 
         // GET: api/Libraries/5
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Library>> GetLibrary(int id)
         {

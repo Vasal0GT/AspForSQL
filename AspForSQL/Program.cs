@@ -1,8 +1,11 @@
 using AspForSQL.Controllers;
 using AspForSQL.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using System;
+using System.Text;
 
 namespace AspForSQL
 {
@@ -21,6 +24,22 @@ namespace AspForSQL
 
             builder.Services.AddDbContext<UserDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("AutDatabase")));
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = builder.Configuration["AuthConfiguration:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = builder.Configuration["AuthConfiguration:Audience"],
+                        ValidateLifetime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Token"]!)),
+                        ValidateIssuerSigningKey = true
+                    };
+                });
 
             builder.Services.AddScoped<IAuthService, AuthService>();
 
