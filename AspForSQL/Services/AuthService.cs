@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace AspForSQL.Services
 {
     public class AuthService(UserDbContext context, IConfiguration configuration) : IAuthService
     {
-        public async Task<string?> LoginAsync(UserDto request)
+        public async Task<TokenResponseDTO?> LoginAsync(UserDto request)
         {
             var user = await context.Users.FirstOrDefaultAsync(u => u.UserName == request.UserName);
             if (user is null )
@@ -25,7 +26,12 @@ namespace AspForSQL.Services
                 return null;
             }
 
-            return CreateToken(user);
+            var response = new TokenResponseDTO
+            {
+                AccesToken = CreateToken(user),
+                RefreshToken = await GenerateAndRefreshTokenAsync(user)
+            };
+            return response;
         }
 
         public async Task<User?> RegisterAsync(UserDto request)
@@ -46,6 +52,22 @@ namespace AspForSQL.Services
             return user;
         }
 
+        private string GenerateRefreshToken()
+        {
+            var random = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(random);
+            return Convert.ToBase64String(random);
+        }
+
+        private async Task<string> GenerateAndRefreshTokenAsync(User user)
+        {
+            var refreshToken = GenerateRefreshToken();
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpirationTime = DateTime.UtcNow.AddDays(7);
+            await context.SaveChangesAsync();
+            return refreshToken;
+        }
         private string CreateToken(User user)
         {
             var claims = new List<Claim>

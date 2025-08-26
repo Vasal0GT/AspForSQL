@@ -29,7 +29,7 @@ namespace AspForSQL.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> login(UserDto request)
+        public async Task<ActionResult<TokenResponseDTO>> login(UserDto request)
         {
             var token = await authService.LoginAsync(request);
             if (token == null)
