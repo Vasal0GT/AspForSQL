@@ -52,6 +52,17 @@ namespace AspForSQL.Services
             return user;
         }
 
+        private async Task<User?> ValidateRefreshTokenAsync(Guid userId, string refreshToken)
+        { 
+            var user = await context.Users.FindAsync(userId);
+            if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpirationTime <= DateTime.UtcNow)
+            {
+                return null;
+            }
+
+            return user;
+        }
+
         private string GenerateRefreshToken()
         {
             var random = new byte[32];
