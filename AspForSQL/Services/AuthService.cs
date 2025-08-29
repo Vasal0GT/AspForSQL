@@ -16,7 +16,7 @@ namespace AspForSQL.Services
         public async Task<TokenResponseDTO?> LoginAsync(UserDto request)
         {
             var user = await context.Users.FirstOrDefaultAsync(u => u.UserName == request.UserName);
-            if (user is null )
+            if (user is null)
             {
                 return null;
             }
@@ -26,12 +26,17 @@ namespace AspForSQL.Services
                 return null;
             }
 
-            var response = new TokenResponseDTO
+            TokenResponseDTO response = await CreateTokenResponse(user);
+            return response;
+        }
+
+        private async Task<TokenResponseDTO> CreateTokenResponse(User? user)
+        {
+            return new TokenResponseDTO
             {
                 AccesToken = CreateToken(user),
                 RefreshToken = await GenerateAndRefreshTokenAsync(user)
             };
-            return response;
         }
 
         public async Task<User?> RegisterAsync(UserDto request)
@@ -50,6 +55,19 @@ namespace AspForSQL.Services
             await context.SaveChangesAsync();
 
             return user;
+        }
+
+        public async Task<TokenResponseDTO?> RefreshTokenAsync(RefreshRequestTokenDTO request)
+        {
+            var user = await ValidateRefreshTokenAsync(request.UserId, request.RefreshToken);
+
+            if (user == null)
+            {
+                return null;
+            }
+            
+            return await CreateTokenResponse(user);
+
         }
 
         private async Task<User?> ValidateRefreshTokenAsync(Guid userId, string refreshToken)
@@ -103,5 +121,7 @@ namespace AspForSQL.Services
 
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
+
+
     }
 }

@@ -40,5 +40,15 @@ namespace AspForSQL.Controllers
             return Ok(token);
         }
 
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult<TokenResponseDTO>> RefreshToken(RefreshRequestTokenDTO request)
+        { 
+            var result = await authService.RefreshTokenAsync(request);
+            if (result is null || result.AccesToken is null || result.RefreshToken is null)
+            {
+                return Unauthorized("Invalid refresh token");
+            }
+            return Ok(result);
+        }
     }
 }
