@@ -1,0 +1,21 @@
+﻿<Window x:Class="HttpClientForSQL.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HttpClientForSQL"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="LoginBN" Content="Login" HorizontalAlignment="Left" Margin="307,217,0,0" VerticalAlignment="Top" Height="57" Width="145" Click="LoginBN_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="307,299,0,0" VerticalAlignment="Top" Height="57" Width="145"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="282,58,0,0" VerticalAlignment="Top" Width="216"/>
+        <TextBox x:Name="LoginTB" HorizontalAlignment="Left" Margin="282,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="170" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="282,112,0,0" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="282,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="118" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Left" Height="18" Margin="494,246,0,0" Stroke="Black" VerticalAlignment="Top" Width="176"/>
+        <Rectangle HorizontalAlignment="Left" Height="21" Margin="494,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="124"/>
+        <TextBox HorizontalAlignment="Left" Margin="132,217,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="Info" HorizontalAlignment="Left" Margin="68,84,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="108" Width="184"/>
+    </Grid>
+</Window>

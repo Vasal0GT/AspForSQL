@@ -1,16 +1,18 @@
 ﻿using AspForSQL;
+using HttpClientForSQL.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HttpClientForSQL
 {
-
+    public class LoginResult
+    {
+        public int StatusCode { get; set; }
+        public string StatusDescription { get; set; }
+        public bool IsSuccess { get; set; }
+    }
     public class APIServer
     {
         
@@ -63,5 +65,17 @@ namespace HttpClientForSQL
             response.EnsureSuccessStatusCode();
             return ((int)response.StatusCode);
         }
+
+        public async Task<LoginResult> LoginAsync(UserDTOclient user)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}Auth/login", user);
+            return new LoginResult
+            {
+                StatusCode = (int)response.StatusCode,
+                StatusDescription = response.StatusCode.ToString(),
+                IsSuccess = response.IsSuccessStatusCode
+            };
+        }
+
     }
 }
