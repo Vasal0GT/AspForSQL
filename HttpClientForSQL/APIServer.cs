@@ -12,6 +12,14 @@ namespace HttpClientForSQL
         public int StatusCode { get; set; }
         public string StatusDescription { get; set; }
         public bool IsSuccess { get; set; }
+        public string AccesToken { get; set; }
+        public string RefreshToken { get; set; }
+    }
+
+    public class TokenResponse
+    {
+        public string AccesToken { get; set; }
+        public string RefreshToken { get; set; }
     }
     public class APIServer
     {
@@ -69,12 +77,21 @@ namespace HttpClientForSQL
         public async Task<LoginResult> LoginAsync(UserDTOclient user)
         {
             var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}Auth/login", user);
-            return new LoginResult
+            LoginResult result = new LoginResult
             {
                 StatusCode = (int)response.StatusCode,
                 StatusDescription = response.StatusCode.ToString(),
                 IsSuccess = response.IsSuccessStatusCode
             };
+            if (result.IsSuccess == true)
+            { 
+                string jsonContent = await response.Content.ReadAsStringAsync();
+                TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(jsonContent);
+                result.AccesToken = tokenResponse.AccesToken;
+                result.RefreshToken = tokenResponse.RefreshToken;
+            }
+
+            return result;
         }
 
     }

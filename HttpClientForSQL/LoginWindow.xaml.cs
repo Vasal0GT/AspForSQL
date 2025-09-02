@@ -43,9 +43,8 @@ namespace HttpClientForSQL
 
                     var response = await api.LoginAsync(userDTO);
                     Console.WriteLine(response);
-                    Info.Text = response.StatusDescription.ToString();
+                    Info.Text = response.AccesToken;
                 });
-
             });
         }
     }

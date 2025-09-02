@@ -15,7 +15,6 @@
         <TextBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="282,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="118" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="{x:Null}"/>
         <Rectangle HorizontalAlignment="Left" Height="18" Margin="494,246,0,0" Stroke="Black" VerticalAlignment="Top" Width="176"/>
         <Rectangle HorizontalAlignment="Left" Height="21" Margin="494,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="124"/>
-        <TextBox HorizontalAlignment="Left" Margin="132,217,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="Info" HorizontalAlignment="Left" Margin="68,84,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="108" Width="184"/>
+        <TextBlock x:Name="Info" HorizontalAlignment="Left" Margin="48,84,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="294" Width="204"/>
     </Grid>
 </Window>
