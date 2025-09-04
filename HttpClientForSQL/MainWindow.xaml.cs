@@ -1,6 +1,8 @@
 ﻿using AspForSQL;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -12,9 +14,11 @@ namespace HttpClientForSQL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly string _accessToken;
         Library localLibrary = new Library();
-        public MainWindow()
+        public MainWindow(string token)
         {
+            _accessToken = token;
             InitializeComponent();
         }
 
@@ -93,6 +97,7 @@ namespace HttpClientForSQL
         private async void GetAll_Button_Click(object sender, RoutedEventArgs e)
         {
             APIServer api = new APIServer();
+            api.editHeader(_accessToken);
             var answer = await api.GetLibrariesAsync();
             string json = JsonConvert.SerializeObject(answer, Formatting.Indented);
             GetAll_TB.Text = json;

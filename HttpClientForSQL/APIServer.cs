@@ -3,6 +3,7 @@ using HttpClientForSQL.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace HttpClientForSQL
@@ -84,15 +85,24 @@ namespace HttpClientForSQL
                 IsSuccess = response.IsSuccessStatusCode
             };
             if (result.IsSuccess == true)
-            { 
+            {
                 string jsonContent = await response.Content.ReadAsStringAsync();
                 TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(jsonContent);
                 result.AccesToken = tokenResponse.AccesToken;
                 result.RefreshToken = tokenResponse.RefreshToken;
-            }
 
-            return result;
+                editHeader(result.AccesToken);
+                return result;
+            }
+            else
+            {  
+                return null; 
+            }
         }
 
+        public void editHeader(string result)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result);
+        }
     }
 }

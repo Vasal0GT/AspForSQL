@@ -42,8 +42,17 @@ namespace HttpClientForSQL
                     };
 
                     var response = await api.LoginAsync(userDTO);
-                    Console.WriteLine(response);
-                    Info.Text = response.AccesToken;
+                    if (response != null)
+                    {
+                        Info.Text = response.AccesToken;
+
+                        MainWindow maiqn = new MainWindow(response.AccesToken);
+                        maiqn.Show();
+                    }
+                    else 
+                    {
+                        Info.Text = "null";
+                    }
                 });
             });
         }
